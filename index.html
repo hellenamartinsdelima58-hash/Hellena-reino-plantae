@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reino Plantae 🌿</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #eef8ed;
+            color: #214d2b;
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            min-height: 430px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+
+            background:
+                linear-gradient(rgba(0,70,25,0.55), rgba(0,70,25,0.55)),
+                url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 21px;
+        }
+
+        /* MENU */
+
+        nav {
+            background: #123d20;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            background: #2e8b46;
+            padding: 10px 18px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #64b96e;
+            transform: translateY(-3px);
+        }
+
+        /* TAGS */
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 25px;
+        }
+
+        .tag {
+            background: #d2f0d3;
+            color: #176b2c;
+            padding: 9px 17px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* SEÇÕES */
+
+        section {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+        }
+
+        h2 {
+            color: #176b2c;
+            font-size: 31px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #26813d;
+            margin: 12px 0;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        /* IMAGENS */
+
+        .imagem-principal {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #f0faef;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #c5e7c5;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .card-conteudo {
+            padding: 18px;
+        }
+
+        /* FOTOSSÍNTESE */
+
+        .formula {
+            background: #dff4df;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 21px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* LISTA */
+
+        ul {
+            margin-left: 25px;
+            line-height: 2;
+        }
+
+        /* QUIZ */
+
+        .pergunta {
+            background: #f1f9f0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 18px;
+        }
+
+        .pergunta label {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .pergunta label:hover {
+            background: #dff1dd;
+        }
+
+        button {
+            border: none;
+            background: #19723a;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #2d9a4d;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* JOGO */
+
+        .jogo {
+            text-align: center;
+        }
+
+        .animais {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .animal {
+            font-size: 55px;
+            background: #edf8eb;
+            border: 3px solid #a8d7a8;
+            border-radius: 15px;
+            padding: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .animal:hover {
+            transform: scale(1.1);
+        }
+
+        #cadeia {
+            min-height: 100px;
+            background: #f4faf3;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 35px;
+        }
+
+        #mensagemJogo {
+            font-size: 19px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #123d20;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        /* RESPONSIVO */
+
+        @media(max-width: 600px) {
+
+            header h1 {
+                font-size: 38px;
+            }
+
+            header p {
+                font-size: 17px;
+            }
+
+            section {
+                margin: 18px;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- CABEÇALHO -->
+
+<header>
+
+    <h1>🌿 Reino Plantae 🌱</h1>
+
+    <p>
+        Conheça o mundo das plantas e sua importância para a vida!
+    </p>
+
+</header>
+
+
+<!-- MENU -->
+
+<nav>
+
+    <a href="#sobre">Sobre</a>
+
+    <a href="#caracteristicas">Características</a>
+
+    <a href="#grupos">Grupos</a>
+
+    <a href="#fotossintese">Fotossíntese</a>
+
+    <a href="#importancia">Importância</a>
+
+    <a href="#quiz">Quiz</a>
+
+    <a href="#jogo">Jogo</a>
+
+</nav>
+
+
+<!-- TAGS -->
+
+<div class="tags">
+
+    <span class="tag">🌱 Plantas</span>
+
+    <span class="tag">☀️ Fotossíntese</span>
+
+    <span class="tag">🌳 Natureza</span>
+
+    <span class="tag">🧬 Eucariontes</span>
+
+    <span class="tag">🌎 Meio ambiente</span>
+
+    <span class="tag">🔬 Biologia</span>
+
+</div>
+
+
+<!-- SOBRE -->
+
+<section id="sobre">
+
+    <h2>🌱 O que é o Reino Plantae?</h2>
+
+    <img
+        class="imagem-principal"
+        src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80"
+        alt="Planta verde"
+    >
+
+    <p>
+        O Reino Plantae é formado pelas plantas. Elas são seres vivos
+        eucariontes, multicelulares e, em sua maioria, autotróficos,
+        pois conseguem produzir seu próprio alimento por meio da
+        fotossíntese.
+    </p>
+
+    <p>
+        As plantas podem ser encontradas em praticamente todos os
+        ambientes da Terra e possuem grande importância para os
+        ecossistemas.
+    </p>
+
+</section>
+
+
+<!-- CARACTERÍSTICAS -->
+
+<section id="caracteristicas">
+
+    <h2>🔬 Características das plantas</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=700&q=80"
+                alt="Folhas verdes"
+            >
+
+            <div class="card-conteudo">
+
+                <h3>Multicelulares</h3>
+
+                <p>
+                    São organismos formados por muitas células.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?auto=format&fit=crop&w=700&q=80"
+                alt="Planta"
+            >
+
+            <div class="card-conteudo">
+
+                <h3>Eucariontes</h3>
+
+                <p>
+                    Suas células possuem núcleo organizado.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=700&q=80"
+                alt="Vegetação"
+            >
+
+            <div class="card-conteudo">
+
+                <h3>Autotróficas</h3>
+
+                <p>
+                    A maioria produz seu próprio alimento.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80"
+                alt="Flores"
+            >
+
+            <div class="card-conteudo">
+
+                <h3>Parede celular</h3>
+
+                <p>
+                    Suas células possuem parede celular composta
+                    principalmente por celulose.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GRUPOS -->
+
+<section id="grupos">
+
+    <h2>🌳 Principais grupos</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-conteudo">
+
+                <h3>🌿 Briófitas</h3>
+
+                <p>
+                    São plantas pequenas, como os musgos.
+                    Não possuem vasos condutores.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-conteudo">
+
+                <h3>🌱 Pteridófitas</h3>
+
+                <p>
+                    Possuem vasos condutores, mas não produzem sementes.
+                    As samambaias são exemplos.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-conteudo">
+
+                <h3>🌲 Gimnospermas</h3>
+
+                <p>
+                    Produzem sementes que não ficam protegidas dentro
+                    de frutos. Os pinheiros são exemplos.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-conteudo">
+
+                <h3>🌻 Angiospermas</h3>
+
+                <p>
+                    Produzem flores, frutos e sementes.
+                    É o grupo mais diverso de plantas.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTOSSÍNTESE -->
+
+<section id="fotossintese">
+
+    <h2>☀️ Fotossíntese</h2>
+
+    <img
+        class="imagem-principal"
+        src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=80"
+        alt="Folhas recebendo luz"
+    >
+
+    <p>
+        A fotossíntese é o processo pelo qual as plantas produzem
+        matéria orgânica utilizando a energia da luz solar.
+    </p>
+
+    <p>
+        Nesse processo, a planta utiliza água e gás carbônico e
+        produz glicose e oxigênio.
+    </p>
+
+    <div class="formula">
+
+        ☀️ Luz + 💧 Água + CO₂
+        <br><br>
+        ⬇️
+        <br><br>
+        🍃 Glicose + O₂
+
+    </div>
+
+</section>
+
+
+<!-- IMPORTÂNCIA -->
+
+<section id="importancia">
+
+    <h2>🌎 Importância das plantas</h2>
+
+    <ul>
+
+        <li>Produzem oxigênio.</li>
+
+        <li>Servem como alimento para diversos seres vivos.</li>
+
+        <li>Participam das cadeias alimentares.</li>
+
+        <li>Fornecem matérias-primas.</li>
+
+        <li>Servem de abrigo para animais.</li>
+
+        <li>Ajudam no equilíbrio dos ecossistemas.</li>
+
+        <li>Contribuem para a manutenção da biodiversidade.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz">
+
+    <h2>🧠 Quiz do Reino Plantae</h2>
+
+
+    <div class="pergunta">
+
+        <p>
+            <strong>
+                1. Qual processo permite que a maioria das plantas produza
+                seu próprio alimento?
+            </strong>
+        </p>
+
+        <label>
+            <input type="radio" name="q1" value="a">
+            Respiração
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="b">
+            Fotossíntese
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="c">
+            Digestão
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="d">
+            Fermentação
+        </label>
+
+    </div>
+
+
+    <div class="pergunta">
+
+        <p>
+            <strong>
+                2. Qual grupo é representado pelos musgos?
+            </strong>
+        </p>
+
+        <label>
+            <input type="radio" name="q2" value="a">
+            Gimnospermas
+        </label>
+
+        <label>
+            <input type="radio" name="q2" value="b">
+            Angiospermas
+        </label>
+
+        <label>
+            <input type="radio" name="q2" value="c">
+            Briófitas
+        </label>
+
+        <label>
+            <input type="radio" name="q2" value="d">
+            Pteridófitas
+        </label>
+
+    </div>
+
+
+    <div class="pergunta">
+
+        <p>
+            <strong>
+                3. Qual grupo produz flores e frutos?
+            </strong>
+        </p>
+
+        <label>
+            <input type="radio" name="q3" value="a">
+            Briófitas
+        </label>
+
+        <label>
+            <input type="radio" name="q3" value="b">
+            Pteridófitas
+        </label>
+
+        <label>
+            <input type="radio" name="q3" value="c">
+            Gimnospermas
+        </label>
+
+        <label>
+            <input type="radio" name="q3" value="d">
+            Angiospermas
+        </label>
+
+    </div>
+
+
+    <button onclick="corrigirQuiz()">
+        Conferir respostas
+    </button>
+
+    <div id="resultado"></div>
+
+</section>
+
+
+<!-- JOGO -->
+
+<section id="jogo">
+
+    <div class="jogo">
+
+        <h2>🎮 Jogo: Monte a cadeia alimentar!</h2>
+
+        <p>
+            Clique nos seres vivos na ordem correta para montar
+            uma cadeia alimentar.
+        </p>
+
+        <p>
+            Comece pelo produtor!
+        </p>
+
+
+        <div class="animais">
+
+            <div class="animal" onclick="adicionar('🐍')">
+                🐍
+            </div>
+
+            <div class="animal" onclick="adicionar('🌱')">
+                🌱
+            </div>
+
+            <div class="animal" onclick="adicionar('🐭')">
+                🐭
+            </div>
+
+            <div class="animal" onclick="adicionar('🦅')">
+                🦅
+            </div>
+
+        </div>
+
+
+        <h3>Sua cadeia:</h3>
+
+        <div id="cadeia">
+            Clique nos seres vivos acima!
+        </div>
+
+        <p id="mensagemJogo"></p>
+
+        <button onclick="verificarJogo()">
+            Verificar cadeia
+        </button>
+
+        <button onclick="reiniciarJogo()">
+            Reiniciar
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- RODAPÉ -->
+
+<footer>
+
+    <h3>🌿 Reino Plantae</h3>
+
+    <p>
+        Trabalho de Ciências - 8º ano
+    </p>
+
+    <p>
+        Feito por: Hellena Martins de Lima 
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* QUIZ */
+
+    function corrigirQuiz() {
+
+        let pontos = 0;
+
+        let q1 = document.querySelector(
+            'input[name="q1"]:checked'
+        );
+
+        let q2 = document.querySelector(
+            'input[name="q2"]:checked'
+        );
+
+        let q3 = document.querySelector(
+            'input[name="q3"]:checked'
+        );
+
+
+        if (q1 && q1.value === "b") {
+            pontos++;
+        }
+
+        if (q2 && q2.value === "c") {
+            pontos++;
+        }
+
+        if (q3 && q3.value === "d") {
+            pontos++;
+        }
+
+
+        document.getElementById("resultado").innerHTML =
+            "🌱 Você acertou " + pontos + " de 3 questões!";
+
+    }
+
+
+    /* JOGO */
+
+    let cadeia = [];
+
+
+    function adicionar(ser) {
+
+        if (cadeia.length < 4) {
+
+            cadeia.push(ser);
+
+            document.getElementById("cadeia").innerHTML =
+                cadeia.join(" ➜ ");
+
+        }
+
+    }
+
+
+    function verificarJogo() {
+
+        let correta =
+            ["🌱", "🐭", "🐍", "🦅"];
+
+
+        if (
+            cadeia.length === 4 &&
+            cadeia.join("") === correta.join("")
+        ) {
+
+            document.getElementById("mensagemJogo").innerHTML =
+                "🎉 Parabéns! Você montou a cadeia alimentar corretamente!";
+
+        } else {
+
+            document.getElementById("mensagemJogo").innerHTML =
+                "🌱 Tente novamente! Comece pelo produtor e pense em quem se alimenta de quem.";
+
+        }
+
+    }
+
+
+    function reiniciarJogo() {
+
+        cadeia = [];
+
+        document.getElementById("cadeia").innerHTML =
+            "Clique nos seres vivos acima!";
+
+        document.getElementById("mensagemJogo").innerHTML =
+            "";
+
+    }
+
+</script>
+
+</body>
+</html>
+<body>
+
+    <!-- Permite pular diretamente para o conteúdo -->
+    <a href="#conteudo" class="pular-conteudo">
+        Pular para o conteúdo principal
+    </a>
+
+    <header>
+        <h1>Reino Plantae</h1>
+    </header>
+
+    <nav aria-label="Menu principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#grupos">Grupos</a>
+        <a href="#quiz">Quiz</a>
+    </nav>
+
+    <main id="conteudo">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reino Plantae - Acessível</title>
+
+    <style>
+
+        /* =========================
+           ESTILO GERAL
+        ========================== */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #222;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        header {
+            background-color: #176b3a;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #ddd;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 27px;
+        }
+
+        p, li {
+            font-size: 18px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+
+        
+  
+            
+        
+
+        button {
+            padding: 12px 18px;
+            margin: 5px;
+            border: 2px solid #000;
+            border-radius: 8px;
+            background: #eeeeee;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+        }
+
+        /* Foco para navegação pelo teclado */
+        button:focus,
+        a:focus {
+            outline: 4px solid #000;
+            outline-offset: 4px;
+        }
+
+
+        /* =========================
+           ALTO CONTRASTE
+        ========================== */
+
+        .alto-contraste {
+            background: #000 !important;
+            color: #fff !important;
+        }
+
+        .alto-contraste header,
+        .alto-contraste section,
+        .alto-contraste .acessibilidade {
+            background: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+
+        .alto-contraste button {
+            background: #fff !important;
+            color: #000 !important;
+            border-color: #fff !important;
+        }
+
+
+        /* =========================
+           MODO PARA DALTÔNICOS
+        ========================== */
+
+        .modo-daltonico {
+            background-color: #f2f2f2;
+            color: #111;
+        }
+
+        .modo-daltonico header {
+            background-color: #0057B8;
+            color: white;
+        }
+
+        .modo-daltonico section {
+            background-color: #ffffff;
+            color: #111;
+            border-color: #0057B8;
+        }
+
+        .modo-daltonico button {
+            background-color: #E69F00;
+            color: #000;
+            border-color: #000;
+        }
+
+
+        /* =========================
+           LINK PARA PULAR CONTEÚDO
+        ========================== */
+
+        .pular {
+            position: absolute;
+            left: -9999px;
+            top: 10px;
+            background: #000;
+            color: #fff;
+            padding: 12px;
+            z-index: 1000;
+        }
+
+        .pular:focus {
+            left: 10px;
+        }
+
+
+        /* =========================
+           RODAPÉ
+        ========================== */
+
+        footer {
+            background: #176b3a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+
+        /* =========================
+           CELULAR
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 23px;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- PULAR PARA O CONTEÚDO -->
+    <a href="#conteudo" class="pular">
+        Pular para o conteúdo principal
+    </a>
+
+
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>🌱 Reino Plantae</h1>
+
+        <p>
+            Conheça o mundo das plantas e sua importância para a vida.
+        </p>
+    </header>
+
+
+
+            
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="conteudo">
+
+        <section>
+            <h2>🌿 O que é o Reino Plantae?</h2>
+
+            <p>
+                O Reino Plantae é formado principalmente por organismos
+                multicelulares e eucariontes. As plantas são seres vivos
+                capazes de realizar fotossíntese.
+            </p>
+
+            <img
+                src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e"
+                alt="Planta verde com várias folhas"
+            >
+        </section>
+
+
+        <section>
+            <h2>🔬 Principais características</h2>
+
+            <ul>
+                <li>São organismos eucariontes.</li>
+                <li>São, em sua maioria, multicelulares.</li>
+                <li>Realizam fotossíntese.</li>
+                <li>Possuem células com parede celular.</li>
+                <li>Possuem clorofila.</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>🌱 Grupos das plantas</h2>
+
+            <p>
+                As plantas podem ser divididas em quatro grandes grupos:
+            </p>
+
+            <ul>
+                <li>🌿 Briófitas</li>
+                <li>🌱 Pteridófitas</li>
+                <li>🌲 Gimnospermas</li>
+                <li>🌸 Angiospermas</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>☀️ Fotossíntese</h2>
+
+            <p>
+                A fotossíntese é o processo pelo qual as plantas produzem
+                seu próprio alimento utilizando água, gás carbônico e
+                energia da luz solar.
+            </p>
+
+            <p>
+                Durante esse processo, as plantas também liberam oxigênio
+                para o ambiente.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>🌎 Importância das plantas</h2>
+
+            <p>
+                As plantas são importantes porque produzem oxigênio,
+                servem de alimento para diversos seres vivos, ajudam a
+                controlar o clima e fornecem matérias-primas utilizadas
+                pelos seres humanos.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>🧠 Resumo</h2>
+
+            <p>
+                O Reino Plantae é formado por plantas e organismos
+                semelhantes. As plantas são eucariontes, geralmente
+                multicelulares e capazes de realizar fotossíntese.
+                Elas são fundamentais para a manutenção da vida na Terra.
+            </p>
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>
+            Trabalho escolar - Reino Plantae
+        </p>
+    </footer>
+  
+
+
